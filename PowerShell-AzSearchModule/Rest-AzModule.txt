@@ -1,0 +1,40 @@
+This text file contains all of the interactive PowerShell commands used for Azure Search service administration.
+It is essentially a placeholder; it will be replaced with a .ps1 file in the near future.
+
+# Verify Az is installed
+Get-InstalledModule -Name Az
+
+# Import it if it's not
+Import-Module -Name Az
+
+# Connect to a AzSubscription
+Connect-AzAccount
+
+# List subscriptions
+Get-AzSubscription | sort SubscriptionName | Select SubscriptionName
+
+Select-AzSubscription -SubscriptionName ContosoSubscription
+
+# List all services
+Get-AzResource -ResourceType Microsoft.Search/searchServices | ft
+
+# Return information about one service
+Get-AzResource -ResourceName <service-name>
+
+# Import the Az.Search module
+Install-Module -Name Az.Search
+
+# List all commands
+Get-Command -Module Az.Search
+
+# Create a service
+New-AzSearchService -ResourceGroupName "demo-westus" -Name "my-demo-searchapp" -Sku "Standard" -Location "West US" -PartitionCount 3 -ReplicaCount 3
+
+# Regenerate admin keys
+New-AzSearchAdminKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -KeyKind Primary
+
+# Create or delete query keys
+New-AzSearchQueryKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <query-key-name>
+
+# Increase or reduce replicas or partitions
+Set-AzSearchService -ResourceGroupName <resource-group-name> -Name <search-service-name> -PartitionCount 6 -ReplicaCount 6
