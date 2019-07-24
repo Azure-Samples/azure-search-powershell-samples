@@ -1,15 +1,19 @@
 ---
+page_type: sample
 topic: sample
-services: azure-search
+
 languages:
   - powershell
   - rest
 name: Azure Search PowerShell Samples
 description: |
   PowerShell users can call REST APIs from the command line or script. Administrators can use the Az.Search module for service management.
+
+services: azure-search
 products:
   - azure-search
 ---
+
 # Azure Search PowerShell Samples repository
 
 This repository contains PowerShell samples demonstrating content and service administration in Azure Search in quickstarts, tutorials, and examples. You can use the shared (free) Azure Search service to run any sample in this repository.
