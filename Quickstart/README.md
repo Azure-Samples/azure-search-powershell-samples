@@ -3,7 +3,7 @@ page_type: sample
 languages:
   - rest
   - powershell
-name: Quickstart in REST (PowerShell)
+name: Quickstart in REST - PowerShell
 description: |
   PowerShell cmdlets with REST API calls to Azure Search (api-version=2019-05-06), demonstrating index definition, data ingestion, and query execution. 
 products:
