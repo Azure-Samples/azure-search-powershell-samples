@@ -16,7 +16,7 @@ products:
 
 This repository contains PowerShell samples demonstrating content and service administration in Azure Search in quickstarts, tutorials, and examples. You can use the shared (free) Azure Search service to run any sample in this repository.
 
-# Quickstart for Azure Search using REST APIs and PowerShell
+## Quickstart for Azure Search using REST APIs and PowerShell
 
 For api-version=2019-05-06, demonstrates the Invoke-WebRequest cmdlet calling Azure Search REST APIs to send requests to Azure Search: create an index, load it with documents, and execute a few queries. This version supports complex types.
 
