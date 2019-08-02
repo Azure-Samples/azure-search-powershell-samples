@@ -5,14 +5,16 @@ languages:
   - powershell
 name: Quickstart in REST - PowerShell
 description: |
-  PowerShell cmdlets with REST API calls to Azure Search (api-version=2019-05-06), demonstrating index definition, data ingestion, and query execution. 
+  Learn basic steps for creating, loading, and querying an Azure Search index using the latest-version REST APIs and PowerShell cmdlets. 
 products:
   - azure
   - azure-search
 urlFragment: powershell-rest-quickstart
 ---
 
-# Quickstart for Azure Search using REST APIs and PowerShell
+# Quickstart sample for Azure Search using REST APIs and PowerShell
+
+![Flask sample MIT license badge](https://img.shields.io/badge/license-MIT-green.svg)
 
 Demonstrates PowerShell cmdlets calling REST APIs to send requests to Azure Search: create an index, load it with documents, and execute a few queries. 
 
@@ -43,3 +45,6 @@ This sample is a PowerShell script (.ps1) file used in [Quickstart: Create an Az
 1. Replace <YOUR-SERVICE-NAME> and <YOUR-ADMIN-API-KEY> with the service and api-key details of your Azure Search service
 1. Open a PowerShell console, navigate to the file location, and run the script: `.\azure-search-quickstart.ps1`
 
+## Next steps
+
+You can learn more about Azure Search on the [official documentation site](https://docs.microsoft.com/azure/search).
