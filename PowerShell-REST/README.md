@@ -3,7 +3,7 @@ page_type: sample
 languages:
   - rest
   - powershell
-name: Create functions using Azure Search REST APIs in PowerShell 
+name: Issue Azure Search REST (api-version=2017-11-11) calls in PowerShell  
 description: |
   Learn how to call Azure Search REST APIs in PowerShell using api-version=2017-11-11. This example demonstrates index definition, data ingestion, and query execution. This api-version does not support complex types.
 products:
@@ -12,7 +12,7 @@ products:
 urlFragment: powershell-rest-2017-11-11
 ---
 
-# Issue REST calls in PowerShell (api-version=2017-11-11)
+# Issue Azure Search REST (api-version=2017-11-11) calls in PowerShell 
 
 PowerShell cmdlets with REST API calls to Azure Search (api-version=2017-11-11), demonstrating index definition, data ingestion, and query execution. This api-version does not support complex types. This sample is standalone and is not referenced in any walkthroughs.
 
