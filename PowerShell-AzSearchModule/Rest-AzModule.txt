@@ -1,4 +1,4 @@
-This text file contains all of the interactive PowerShell commands used for Azure Search service administration.
+This text file contains all of the interactive PowerShell commands used for Azure Cognitive Search service administration.
 It is essentially a placeholder; it will be replaced with a .ps1 file in the near future.
 
 # Verify Az is installed
