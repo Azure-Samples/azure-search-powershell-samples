@@ -5,16 +5,16 @@ languages:
   - powershell
 name: PowerShell AzSearchModule
 description: |
-  Demonstrates using the AzSearchModule cmdlets for Azure Search service, capacity, and key administration.
+  Demonstrates using the AzSearchModule cmdlets for Azure Cognitive Search service, capacity, and key administration.
 products:
   - azure
-  - azure-search
+  - cognitive-search
 urlFragment: powershell-azsearch-module
 ---
 
 # PowerShell AzSearchModule
 
-Provides cmdlet syntax demonstrating how to sue the AzSearchModule for administrative tasks. The cmdlets in this module are used to create or delete a service, adjust capacity, and manage keys. For more information, see [Manage your Azure Search service with PowerShell](https://docs.microsoft.com/azure/search/search-manage-powershell).
+Provides cmdlet syntax demonstrating how to sue the AzSearchModule for administrative tasks. The cmdlets in this module are used to create or delete a service, adjust capacity, and manage keys. For more information, see [Manage your Azure Cognitive Search service with PowerShell](https://docs.microsoft.com/azure/search/search-manage-powershell).
 
 ## Contents
 
@@ -29,7 +29,7 @@ Provides cmdlet syntax demonstrating how to sue the AzSearchModule for administr
 ## Prerequisites
 
 - [Windows PowerShell app](https://docs.microsoft.com/powershell/scripting/components/ise/introducing-the-windows-powershell-ise?view=powershell-6)
-- [Azure Search service](https://docs.microsoft.com/azure/search/search-create-service-portal)
+- [Azure Cognitive Search service](https://docs.microsoft.com/azure/search/search-create-service-portal)
 
 ## Setup
 

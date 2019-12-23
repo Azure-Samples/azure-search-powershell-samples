@@ -3,18 +3,18 @@ page_type: sample
 languages:
   - rest
   - powershell
-name: Issue Azure Search REST (api-version=2017-11-11) calls in PowerShell  
+name: Issue Azure Cognitive Search REST (api-version=2017-11-11) calls in PowerShell  
 description: |
-  Learn how to call Azure Search REST APIs in PowerShell using api-version=2017-11-11. This example demonstrates index definition, data ingestion, and query execution. This api-version does not support complex types.
+  Learn how to call Azure Cognitive Search REST APIs in PowerShell using api-version=2017-11-11. This example demonstrates index definition, data ingestion, and query execution. This api-version does not support complex types.
 products:
   - azure
-  - azure-search
+  - cognitive-search
 urlFragment: powershell-rest-2017-11-11
 ---
 
-# Issue Azure Search REST (api-version=2017-11-11) calls in PowerShell 
+# Issue Azure Cognitive Search REST (api-version=2017-11-11) calls in PowerShell 
 
-PowerShell cmdlets with REST API calls to Azure Search (api-version=2017-11-11), demonstrating index definition, data ingestion, and query execution. This api-version does not support complex types. This sample is standalone and is not referenced in any walkthroughs.
+PowerShell cmdlets with REST API calls to Azure Cognitive Search (api-version=2017-11-11), demonstrating index definition, data ingestion, and query execution. This api-version does not support complex types. This sample is standalone and is not referenced in any walkthroughs.
 
 ## Contents
 
@@ -29,7 +29,7 @@ PowerShell cmdlets with REST API calls to Azure Search (api-version=2017-11-11),
 ## Prerequisites
 
 - [Windows PowerShell app](https://docs.microsoft.com/powershell/scripting/components/ise/introducing-the-windows-powershell-ise?view=powershell-6)
-- [Azure Search service](https://docs.microsoft.com/azure/search/search-create-service-portal)
+- [Azure Cognitive Search service](https://docs.microsoft.com/azure/search/search-create-service-portal)
 
 ## Setup
 
@@ -38,5 +38,5 @@ PowerShell cmdlets with REST API calls to Azure Search (api-version=2017-11-11),
 
 ## Running the quickstart
 1. Open the RestHowTo-Invoke-RestMethod.ps1 file in an editor
-1. Replace <YOUR-SERVICE-NAME> and <YOUR-ADMIN-API-KEY> with the service and api-key details of your Azure Search service
+1. Replace <YOUR-SERVICE-NAME> and <YOUR-ADMIN-API-KEY> with the service and api-key details of your Azure Cognitive Search service
 1. Open a PowerShell console, navigate to the file location, and run the script: `.\RestHowTo-Invoke-RestMethod.ps1`
