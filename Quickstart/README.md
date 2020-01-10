@@ -8,7 +8,7 @@ description: |
   Learn basic steps for creating, loading, and querying an Azure Cognitive Search index using the latest-version REST APIs and PowerShell cmdlets. 
 products:
   - azure
-  - cognitive-search
+  - azure-cognitive-search
 urlFragment: powershell-rest-quickstart
 ---
 

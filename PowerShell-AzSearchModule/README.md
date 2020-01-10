@@ -8,7 +8,7 @@ description: |
   Demonstrates using the AzSearchModule cmdlets for Azure Cognitive Search service, capacity, and key administration.
 products:
   - azure
-  - cognitive-search
+  - azure-cognitive-search
 urlFragment: powershell-azsearch-module
 ---
 
