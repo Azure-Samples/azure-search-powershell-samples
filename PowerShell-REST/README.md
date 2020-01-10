@@ -8,7 +8,7 @@ description: |
   Learn how to call Azure Cognitive Search REST APIs in PowerShell using api-version=2017-11-11. This example demonstrates index definition, data ingestion, and query execution. This api-version does not support complex types.
 products:
   - azure
-  - cognitive-search
+  - azure-cognitive-search
 urlFragment: powershell-rest-2017-11-11
 ---
 
