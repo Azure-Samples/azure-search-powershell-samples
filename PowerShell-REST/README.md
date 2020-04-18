@@ -1,7 +1,6 @@
 ---
 page_type: sample
 languages:
-  - rest
   - powershell
 name: Issue Azure Cognitive Search REST (api-version=2017-11-11) calls in PowerShell  
 description: |
