@@ -1,7 +1,6 @@
 ---
 page_type: sample
 languages:
-  - rest
   - powershell
 name: PowerShell AzSearchModule
 description: |

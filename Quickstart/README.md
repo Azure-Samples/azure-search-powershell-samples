@@ -1,7 +1,6 @@
 ---
 page_type: sample
 languages:
-  - rest
   - powershell
 name: Quickstart in REST - PowerShell
 description: |
