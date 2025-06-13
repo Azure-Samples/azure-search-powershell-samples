@@ -17,24 +17,28 @@ urlFragment: powershell-rest-quickstart
 
 Demonstrates PowerShell cmdlets calling REST APIs to send requests to Azure AI Search: create an index, load it with documents, and execute a few queries. 
 
-This sample is a PowerShell script (.ps1) file used in [Quickstart: Create an Azure AI Search index using PowerShell and the AI  REST API](https://docs.microsoft.com/azure/search/search-get-started-powershell). It uses the [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-6) cmdlet and [Azure AI Search REST APIs (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/).
+This sample is a PowerShell script (.ps1) file used in [Quickstart: Create an Azure AI Search index using PowerShell and the AI  REST API](https://learn.microsoft.com/azure/search/search-get-started-powershell). It uses the [Invoke-WebRequest](https://learn.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-6) cmdlet and [Azure AI Search REST APIs (api-version=2019-05-06)](https://learn.microsoft.com/rest/api/searchservice/).
 
 ## Prerequisites
 
-- [Windows PowerShell app](https://docs.microsoft.com/powershell/scripting/components/ise/introducing-the-windows-powershell-ise?view=powershell-6)
-- [Azure AI Search service](https://docs.microsoft.com/azure/search/search-create-service-portal)
+- [Windows PowerShell](https://learn.microsoft.com/powershell/scripting/install/installing-powershell-on-windows)
+
+- [Azure AI Search service](https://learn.microsoft.com/azure/search/search-create-service-portal)
 
 ## Set up the sample
 
 1. Clone or download this sample repository.
-1. Extract contents if the download is a zip file. Make sure the files are read-write.
+1
+. Extract contents if the download is a zip file. Make sure the files are read-write.
 
 ## Run the sample
 
-1. Open the azure-search-quickstart.ps1 file in an editor
-1. Replace <YOUR-SERVICE-NAME> and <YOUR-ADMIN-API-KEY> with the service and api-key details of your Azure AI Search service
-1. Open a PowerShell console, navigate to the file location, and run the script: `.\azure-search-quickstart.ps1`
+1. Open the azure-search-quickstart.ps1 file in an editor.
+
+1. Replace <YOUR-SERVICE-NAME> and <YOUR-ADMIN-API-KEY> with the service and api-key details of your Azure AI Search service.
+
+1. Open a PowerShell console, navigate to the file location, and run the script: `.\azure-search-quickstart.ps1`.
 
 ## Next steps
 
-You can learn more about Azure AI Search on the [official documentation site](https://docs.microsoft.com/azure/search).
+You can learn more about Azure AI Search on the [official documentation site](https://learn.microsoft.com/azure/search).
