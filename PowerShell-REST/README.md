@@ -2,40 +2,35 @@
 page_type: sample
 languages:
   - powershell
-name: Issue Azure AI Search REST (api-version=2017-11-11) calls in PowerShell  
+name: Issue Azure AI Search REST calls in PowerShell  
 description: |
-  Learn how to call Azure AI Search REST APIs in PowerShell using api-version=2017-11-11. This example demonstrates index definition, data ingestion, and query execution. This api-version does not support complex types.
+  Learn how to call the Azure AI Search REST APIs from PowerShell. This example demonstrates index creation, data ingestion, and query execution.
 products:
   - azure
   - azure-cognitive-search
-urlFragment: powershell-rest-2017-11-11
+urlFragment: azure-search-powershell-rest
 ---
 
-# Issue Azure AI Search REST (api-version=2017-11-11) calls in PowerShell 
+# Issue Azure AI Search REST calls in PowerShell 
 
-PowerShell cmdlets with REST API calls to Azure AI Search (api-version=2017-11-11), demonstrating index definition, data ingestion, and query execution. This api-version does not support complex types. This sample is standalone and is not referenced in any walkthroughs.
-
-## Contents
-
-| File/folder | Description |
-|-------------|-------------|
-| `RestHowTo-Invoke-RestMethod.ps1` | PowerShell script, which you can run from the command line |
-| `.gitignore` | Define what to ignore at commit time. |
-| `CONTRIBUTING.md` | Guidelines for contributing to the sample. |
-| `README.md` | This README file. |
-| `LICENSE`   | The license for the sample. |
+PowerShell cmdlets with REST API calls to Azure AI Search, demonstrating index creation, data ingestion, and query execution. This sample is standalone and is not referenced in any walkthroughs.
 
 ## Prerequisites
 
-- [Windows PowerShell app](https://docs.microsoft.com/powershell/scripting/components/ise/introducing-the-windows-powershell-ise?view=powershell-6)
-- [Azure AI Search service](https://docs.microsoft.com/azure/search/search-create-service-portal)
+- [Windows PowerShell](https://learn.microsoft.com/powershell/scripting/install/installing-powershell-on-windows)
+
+- [Azure AI Search service](https://learn.microsoft.com/azure/search/search-create-service-portal)
 
 ## Setup
 
 1. Clone or download this sample repository.
+
 1. Extract contents if the download is a zip file. Make sure the files are read-write.
 
-## Running the quickstart
-1. Open the RestHowTo-Invoke-RestMethod.ps1 file in an editor
-1. Replace <YOUR-SERVICE-NAME> and <YOUR-ADMIN-API-KEY> with the service and api-key details of your Azure AI Search service
-1. Open a PowerShell console, navigate to the file location, and run the script: `.\RestHowTo-Invoke-RestMethod.ps1`
+## Run the script.
+
+1. Open the RestHowTo-Invoke-RestMethod.ps1 file in an editor.
+
+1. Replace <YOUR-SERVICE-NAME> and <YOUR-ADMIN-API-KEY> with the service and api-key details of your Azure AI Search service.
+
+1. Open a PowerShell console, navigate to the file location, and run the script: `.\RestHowTo-Invoke-RestMethod.ps1`.

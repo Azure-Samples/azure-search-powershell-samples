@@ -54,11 +54,11 @@ function Send-RequestWithBody
     $resp.Content
 }
 
-Send-Request DELETE "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06" $apiKey
+Send-Request DELETE "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart-ps?api-version=2024-07-01" $apiKey
 
 $body = @"
 {
-    "name": "hotels-quickstart",  
+    "name": "hotels-quickstart-ps",  
     "fields": [
         {"name": "HotelId", "type": "Edm.String", "key": true, "filterable": true},
         {"name": "HotelName", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": true, "facetable": false},
@@ -81,7 +81,7 @@ $body = @"
 }
 "@
 
-Send-RequestWithBody POST "https://$searchServiceName.search.windows.net/indexes?api-version=2019-05-06" $apiKey $body
+Send-RequestWithBody POST "https://$searchServiceName.search.windows.net/indexes?api-version=2024-07-01" $apiKey $body
 
 $body = @"
 {
@@ -89,12 +89,12 @@ $body = @"
     {
     "@search.action": "upload",
     "HotelId": "1",
-    "HotelName": "Secret Point Motel",
-    "Description": "The hotel is ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Time's Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.",
+    "HotelName": "Stay-Kay City Hotel",
+    "Description": "This classic hotel is fully-refurbished and ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Times Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.",
     "Category": "Boutique",
-    "Tags": [ "pool", "air conditioning", "concierge" ],
+    "Tags": [ "view", "air conditioning", "concierge" ],
     "ParkingIncluded": false,
-    "LastRenovationDate": "1970-01-18T00:00:00Z",
+    "LastRenovationDate": "2022-01-18T00:00:00Z",
     "Rating": 3.60,
     "Address": 
         {
@@ -108,12 +108,12 @@ $body = @"
     {
     "@search.action": "upload",
     "HotelId": "2",
-    "HotelName": "Twin Dome Motel",
-    "Description": "The hotel is situated in a  nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts.",
+    "HotelName": "Old Century Hotel",
+    "Description": "The hotel is situated in a nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts. The hotel also regularly hosts events like wine tastings, beer dinners, and live music.",
     "Category": "Boutique",
     "Tags": [ "pool", "free wifi", "concierge" ],
     "ParkingIncluded": false,
-    "LastRenovationDate": "1979-02-18T00:00:00Z",
+    "LastRenovationDate": "2019-02-18T00:00:00Z",
     "Rating": 3.60,
     "Address": 
         {
@@ -127,10 +127,10 @@ $body = @"
     {
     "@search.action": "upload",
     "HotelId": "3",
-    "HotelName": "Triple Landscape Hotel",
-    "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
-    "Category": "Resort and Spa",
-    "Tags": [ "air conditioning", "bar", "continental breakfast" ],
+    "HotelName": "Gastronomic Landscape Hotel",
+    "Description": "The Gastronomic Hotel stands out for its culinary excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
+    "Category": "Suite",
+    "Tags": [ "restaurant", "bar", "continental breakfast" ],
     "ParkingIncluded": true,
     "LastRenovationDate": "2015-09-20T00:00:00Z",
     "Rating": 4.80,
@@ -146,12 +146,12 @@ $body = @"
     {
     "@search.action": "upload",
     "HotelId": "4",
-    "HotelName": "Sublime Cliff Hotel",
-    "Description": "Sublime Cliff Hotel is located in the heart of the historic center of Sublime in an extremely vibrant and lively area within short walking distance to the sites and landmarks of the city and is surrounded by the extraordinary beauty of churches, buildings, shops and monuments. Sublime Cliff is part of a lovingly restored 1800 palace.",
+    "HotelName": "Sublime Palace Hotel",
+    "Description": "Sublime Palace Hotel is located in the heart of the historic center of Sublime in an extremely vibrant and lively area within short walking distance to the sites and landmarks of the city and is surrounded by the extraordinary beauty of churches, buildings, shops and monuments. Sublime Cliff is part of a lovingly restored 19th century resort, updated for every modern convenience.",
     "Category": "Boutique",
-    "Tags": [ "concierge", "view", "24-hour front desk service" ],
+    "Tags": [ "concierge", "view", "air conditioning" ],
     "ParkingIncluded": true,
-    "LastRenovationDate": "1960-02-06T00:00:00Z",
+    "LastRenovationDate": "2020-02-06T00:00:00Z",
     "Rating": 4.60,
     "Address": 
         {
@@ -166,7 +166,7 @@ $body = @"
 }
 "@
 
-Send-RequestWithBody POST "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06" $apiKey $body
+Send-RequestWithBody POST "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart-ps/docs/index?api-version=2024-07-01" $apiKey $body
 
 Write-Line "`nWaiting for documents to be indexed..."
 
@@ -174,7 +174,7 @@ Start-Sleep -Seconds 2
 
 Write-Line "`nSearch the index for restaurant and wifi and return only HotelName, Description, and Tags:"
 
-Send-Request GET "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart/docs?search=restaurant wifi&`$select=HotelName, Description, Tags&api-version=2019-05-06" $apiKey
+Send-Request GET "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart-ps/docs?search=restaurant wifi&`$select=HotelName, Description, Tags&api-version=2019-05-06" $apiKey
 
 $body = @"
 {
@@ -183,11 +183,11 @@ $body = @"
 }
 "@
 
-Send-RequestWithBody POST "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart/docs/search?api-version=2019-05-06" $apiKey $body
+Send-RequestWithBody POST "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart-ps/docs/search?api-version=2024-07-01" $apiKey $body
 
 Write-Line "`nFilter on ratings higher than 4 and return only HotelName and Rating:"
 
-Send-Request GET "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart/docs?search=*&`$filter=Rating gt 4&`$select=HotelName,Rating&api-version=2019-05-06" $apiKey
+Send-Request GET "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart-ps/docs?search=*&`$filter=Rating gt 4&`$select=HotelName,Rating&api-version=2019-05-06" $apiKey
 
 $body = @"
 {
@@ -197,11 +197,11 @@ $body = @"
 }
 "@
 
-Send-RequestWithBody POST "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart/docs/search?api-version=2019-05-06" $apiKey $body
+Send-RequestWithBody POST "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart-ps/docs/search?api-version=2024-07-01" $apiKey $body
 
-Write-Line "`nSearch on the term 'boutique', taking the top two results, and return only HotelName and Cateogry:"
+Write-Line "`nSearch on the term 'boutique', taking the top two results, and return only HotelName and Category:"
 
-Send-Request GET "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart/docs?search=*&`$top=2&`$select=HotelName,Category&api-version=2019-05-06" $apiKey
+Send-Request GET "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart-ps/docs?search=*&`$top=2&`$select=HotelName,Category&api-version=2019-05-06" $apiKey
 
 $body = @"
 {
@@ -211,11 +211,11 @@ $body = @"
 }
 "@
 
-Send-RequestWithBody POST "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart/docs/search?api-version=2019-05-06" $apiKey $body
+Send-RequestWithBody POST "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart-ps/docs/search?api-version=2024-07-01" $apiKey $body
 
 Write-Line "`nSearch the entire index for the term 'pool' and sort by Rating in descending order:"
 
-Send-Request GET "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart/docs?search=pool&$select=HotelName,Description,Tags,Rating&api-version=2019-05-06" $apiKey
+Send-Request GET "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart-ps/docs?search=pool&$select=HotelName,Description,Tags,Rating&api-version=2019-05-06" $apiKey
 
 $body = @"
 {
@@ -225,6 +225,6 @@ $body = @"
 }
 "@
 
-Send-RequestWithBody POST "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart/docs/search?api-version=2019-05-06" $apiKey $body
+Send-RequestWithBody POST "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart-ps/docs/search?api-version=2024-07-01" $apiKey $body
 
 
