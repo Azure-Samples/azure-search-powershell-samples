@@ -1,5 +1,14 @@
-$apiKey = '<YOUR-ADMIN-API-KEY>'
-$searchServiceName = '<YOUR-SEARCH-SERVICE-NAME>'
+$baseUrl = '<YOUR-SEARCH-SERVICE>'  # e.g., https://my-service.search.windows.net
+
+# Get access token
+$token = az account get-access-token --resource https://search.azure.com/ --query accessToken --output tsv
+
+# Create headers object (used for all requests)
+$headers = @{
+    'Authorization' = "Bearer $token"
+    'Content-Type' = 'application/json'
+    'Accept' = 'application/json'
+}
 
 function Write-Line
 {
@@ -21,9 +30,7 @@ function Write-Headers
 
 function Send-Request
 {
-    param($method, $requestUri, $apiKey)
-    # Adding 'odata.metadata=none' to the Accept header to make the response payloads more concise and readable.
-    $headers = @{"api-key"=$apiKey; "Accept"="application/json; odata.metadata=none"}
+    param($method, $requestUri, $headers)
 
     Write-Line "`n$method $requestUri"
     Write-Headers $headers
@@ -36,29 +43,23 @@ function Send-Request
 
 function Send-RequestWithBody
 {
-    param($method, $requestUri, $apiKey, $body)
-    # Adding 'odata.metadata=none' to the Accept header to make the response payloads more concise and readable.
-    $headers = @{"api-key"=$apiKey; "Accept"="application/json; odata.metadata=none"}
-
-    # Adding 'charset=utf-8' to the Content-Type header so that we can index non-ASCII characters like accents from PowerShell.
-    $contentType = "application/json; charset=utf-8"
+    param($method, $requestUri, $headers, $body)
 
     Write-Line "`n$method $requestUri"
-    Write-Line "Content-Type: $contentType"
     Write-Headers $headers
     Write-Line "`n$body"
     
     $resp = @{}
-    $resp = Invoke-WebRequest $requestUri -Method $method -Body $body -ContentType $contentType -Headers $headers
+    $resp = Invoke-WebRequest $requestUri -Method $method -Body $body -Headers $headers
     $resp.StatusCode
     $resp.Content
 }
 
-Send-Request DELETE "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart-ps?api-version=2024-07-01" $apiKey
+Send-Request DELETE "$baseUrl/indexes/hotels-quickstart?api-version=2025-09-01" $headers
 
 $body = @"
 {
-    "name": "hotels-quickstart-ps",  
+    "name": "hotels-quickstart",  
     "fields": [
         {"name": "HotelId", "type": "Edm.String", "key": true, "filterable": true},
         {"name": "HotelName", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": true, "facetable": false},
@@ -81,7 +82,7 @@ $body = @"
 }
 "@
 
-Send-RequestWithBody POST "https://$searchServiceName.search.windows.net/indexes?api-version=2024-07-01" $apiKey $body
+Send-RequestWithBody POST "$baseUrl/indexes?api-version=2025-09-01" $headers $body
 
 $body = @"
 {
@@ -128,7 +129,7 @@ $body = @"
     "@search.action": "upload",
     "HotelId": "3",
     "HotelName": "Gastronomic Landscape Hotel",
-    "Description": "The Gastronomic Hotel stands out for its culinary excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
+    "Description": "The Gastronomic Hotel stands out for its culinary excellence under the management of William Dough, who advises on and oversees all of the Hotel's restaurant services.",
     "Category": "Suite",
     "Tags": [ "restaurant", "bar", "continental breakfast" ],
     "ParkingIncluded": true,
@@ -166,7 +167,7 @@ $body = @"
 }
 "@
 
-Send-RequestWithBody POST "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart-ps/docs/index?api-version=2024-07-01" $apiKey $body
+Send-RequestWithBody POST "$baseUrl/indexes/hotels-quickstart/docs/index?api-version=2025-09-01" $headers $body
 
 Write-Line "`nWaiting for documents to be indexed..."
 
@@ -174,7 +175,7 @@ Start-Sleep -Seconds 2
 
 Write-Line "`nSearch the index for restaurant and wifi and return only HotelName, Description, and Tags:"
 
-Send-Request GET "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart-ps/docs?search=restaurant wifi&`$select=HotelName, Description, Tags&api-version=2019-05-06" $apiKey
+Send-Request GET "$baseUrl/indexes/hotels-quickstart/docs?search=restaurant wifi&`$select=HotelName,Description,Tags&api-version=2025-09-01" $headers
 
 $body = @"
 {
@@ -183,11 +184,11 @@ $body = @"
 }
 "@
 
-Send-RequestWithBody POST "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart-ps/docs/search?api-version=2024-07-01" $apiKey $body
+Send-RequestWithBody POST "$baseUrl/indexes/hotels-quickstart/docs/search?api-version=2025-09-01" $headers $body
 
 Write-Line "`nFilter on ratings higher than 4 and return only HotelName and Rating:"
 
-Send-Request GET "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart-ps/docs?search=*&`$filter=Rating gt 4&`$select=HotelName,Rating&api-version=2019-05-06" $apiKey
+Send-Request GET "$baseUrl/indexes/hotels-quickstart/docs?search=*&`$filter=Rating gt 4&`$select=HotelName,Rating&api-version=2025-09-01" $headers
 
 $body = @"
 {
@@ -197,25 +198,25 @@ $body = @"
 }
 "@
 
-Send-RequestWithBody POST "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart-ps/docs/search?api-version=2024-07-01" $apiKey $body
+Send-RequestWithBody POST "$baseUrl/indexes/hotels-quickstart/docs/search?api-version=2025-09-01" $headers $body
 
 Write-Line "`nSearch on the term 'boutique', taking the top two results, and return only HotelName and Category:"
 
-Send-Request GET "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart-ps/docs?search=*&`$top=2&`$select=HotelName,Category&api-version=2019-05-06" $apiKey
+Send-Request GET "$baseUrl/indexes/hotels-quickstart/docs?search=boutique&`$top=2&`$select=HotelName,Category&api-version=2025-09-01" $headers
 
 $body = @"
 {
-    "search": "*",
+    "search": "boutique",
     "select": "HotelName,Category",
     "top": 2
 }
 "@
 
-Send-RequestWithBody POST "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart-ps/docs/search?api-version=2024-07-01" $apiKey $body
+Send-RequestWithBody POST "$baseUrl/indexes/hotels-quickstart/docs/search?api-version=2025-09-01" $headers $body
 
 Write-Line "`nSearch the entire index for the term 'pool' and sort by Rating in descending order:"
 
-Send-Request GET "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart-ps/docs?search=pool&$select=HotelName,Description,Tags,Rating&api-version=2019-05-06" $apiKey
+Send-Request GET "$baseUrl/indexes/hotels-quickstart/docs?search=pool&`$select=HotelName,Description,Tags,Rating&`$orderby=Rating desc&api-version=2025-09-01" $headers
 
 $body = @"
 {
@@ -225,6 +226,4 @@ $body = @"
 }
 "@
 
-Send-RequestWithBody POST "https://$searchServiceName.search.windows.net/indexes/hotels-quickstart-ps/docs/search?api-version=2024-07-01" $apiKey $body
-
-
+Send-RequestWithBody POST "$baseUrl/indexes/hotels-quickstart/docs/search?api-version=2025-09-01" $headers $body
